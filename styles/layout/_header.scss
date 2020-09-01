@@ -18,22 +18,22 @@
       "opacity #{_duration(article)} ease-in-out"
     )
   );
-  background-image: -moz-radial-gradient(
-    rgba(0, 0, 0, 0.25) 25%,
-    rgba(0, 0, 0, 0) 55%
-  );
-  background-image: -webkit-radial-gradient(
-    rgba(0, 0, 0, 0.25) 25%,
-    rgba(0, 0, 0, 0) 55%
-  );
-  background-image: -ms-radial-gradient(
-    rgba(0, 0, 0, 0.25) 25%,
-    rgba(0, 0, 0, 0) 55%
-  );
-  background-image: radial-gradient(
-    rgba(0, 0, 0, 0.25) 25%,
-    rgba(0, 0, 0, 0) 55%
-  );
+  // background-image: -moz-radial-gradient(
+  //   rgba(0, 0, 0, 0.25) 25%,
+  //   rgba(0, 0, 0, 0) 55%
+  // );
+  // background-image: -webkit-radial-gradient(
+  //   rgba(0, 0, 0, 0.25) 25%,
+  //   rgba(0, 0, 0, 0) 55%
+  // );
+  // background-image: -ms-radial-gradient(
+  //   rgba(0, 0, 0, 0.25) 25%,
+  //   rgba(0, 0, 0, 0) 55%
+  // );
+  // background-image: radial-gradient(
+  //   rgba(0, 0, 0, 0.35) 20%,
+  //   rgba(0, 0, 0, 0) 60%
+  // );
   max-width: 100%;
   text-align: center;
 
@@ -73,9 +73,11 @@
   .content {
     border-style: solid;
     border-color: _palette(border);
-    border-top-width: _size(border-width);
-    border-bottom-width: _size(border-width);
+    border-width: _size(border-width);
+    box-shadow: 0 0 60px rgba(200, 200, 200, 0.15);
+    border-radius: _size(border-radius) * 3;
     max-width: 100%;
+    background: rgba(0, 0, 0, 0.2);
 
     .inner {
       @include vendor(

@@ -13,8 +13,11 @@ const Header = (props) => (
           <a href="https://www.edocu.com/" target="_blank">
             eDocu
           </a>
-          .<br /> Vo voľnom čase chodím do prírody 🏔,
-          <br /> na festivaly 🎛️, cestujem 🗺 a hrám 🎮.
+          .
+        </p>
+        <p>
+          Vo voľnom čase chodím do prírody 🏕,
+          <br /> na festivaly 🔊, cestujem 🌍 a hrám 🎮.
         </p>
       </div>
     </div>
