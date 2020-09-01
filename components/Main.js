@@ -1,80 +1,172 @@
-import PropTypes from 'prop-types';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
-import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook'
-import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram'
-import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
+import PropTypes from "prop-types";
+import axios from "axios";
 
 class Main extends React.Component {
-  render() {
+  state = {
+    contactForm: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  };
 
-    let close = <div className="close" onClick={() => {this.props.onCloseArticle()}}></div>
+  submitContact(e) {
+    e.preventDefault();
+    axios
+      .post("https://formcarry.com/s/Xyx7m6AFIBSo", this.state.contactForm, {
+        headers: { Accept: "application/json" },
+      })
+      .then(({ data }) => {
+        alert("Ďakujem, ozvem sa Vám čo najskôr.");
+      });
+  }
+
+  render() {
+    const close = (
+      <div
+        className="close"
+        onClick={() => {
+          this.props.onCloseArticle();
+        }}
+      ></div>
+    );
+
+    const getAge = (birthDate) =>
+      Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e10);
 
     return (
-      <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
-
-        <article id="intro" className={`${this.props.article === 'intro' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-          <h2 className="major">Intro</h2>
-          <span className="image main"><img src="/static/images/pic01.jpg" alt="" /></span>
-          <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+      <div
+        id="main"
+        style={this.props.timeout ? { display: "flex" } : { display: "none" }}
+      >
+        <article
+          id="intro"
+          className={`${this.props.article === "intro" ? "active" : ""} ${
+            this.props.articleTimeout ? "timeout" : ""
+          }`}
+          style={{ display: "none" }}
+        >
+          <h2 className="major">O mne</h2>
+          <span className="image main">
+            <img src="/static/images/about.jpg" alt="" />
+          </span>
+          <p>
+            Narodil som sa v Bratislave a mám {getAge("1995-11-09")} rokov.
+            Odmalička ma baví práca s počítačmi, či uz ide o grafiku, hranie sa
+            alebo programovanie. Neprogramujem však 24/7 a okrem iného sa
+            venujem cvičeniu kalisteniky, športom ako lyžovanie, lezenie,
+            splavovanie. Rád si zresetujem hlavu pobytom v prírode či uz na
+            prechádzke alebo vysokohorskej turistike. Hudba je velká čast môjho
+            života, chodievam na rôzne koncerty a festivaly (Grape, Beats4Love).
+            Hrávam League of Legends a občas aj iné hry. Mám kocúra Felixa,
+            ktorý mi robí doma neustále neporiadok (áno, za všetok neporiadok u
+            mna môže len on).
+          </p>
           {close}
         </article>
 
-        <article id="work" className={`${this.props.article === 'work' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-          <h2 className="major">Work</h2>
-          <span className="image main"><img src="/static/images/pic02.jpg" alt="" /></span>
-          <p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
-          <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
+        <article
+          id="work"
+          className={`${this.props.article === "work" ? "active" : ""} ${
+            this.props.articleTimeout ? "timeout" : ""
+          }`}
+          style={{ display: "none" }}
+        >
+          <h2 className="major">Práca</h2>
+          <span className="image main">
+            <img src="/static/images/work.jpg" alt="" />
+          </span>
+
+          <p>
+            O webové technológie sa zaujímam odmalička. Svoju prvú stránku som
+            vytvoril keď som mal okolo 14 a odvtedy som neprestal tvoriť. Začal
+            som s PHP a postupne prešiel na vývoj v Javascripte. Prvé webové
+            aplikácie som robil v AngularJS ale teraz robím skoro výhradne s
+            React v Typescripte. Študoval som Aplikovanú Informatiku na
+            Masarykovej Univerzite v Brne a teraz pracujem vo firme eDocu.
+            Vyvíjam tu Front End aplikácie, React Native mobilné aplikácie a
+            pracujem s AWS službami ako AWS Lambda na budovanie Back End služieb
+            ku GIS systémom.
+          </p>
+
+          <p>
+            Zaujímam sa aj o blockchain technológie, hlavne okolo siete Ethereum
+            ($ETH). Smart kontrakty bežiace na tejto sieti otvárajú brány novým
+            možnostiam v oblasti decentralizovaných financíí (takzvané DeFi) ako
+            sú napríklad anonymné, otvorené a cenzúre odolné burzy bez
+            sprostredkovateľov.
+          </p>
           {close}
         </article>
 
-        <article id="about" className={`${this.props.article === 'about' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-          <h2 className="major">About</h2>
-          <span className="image main"><img src="/static/images/pic03.jpg" alt="" /></span>
-          <p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
-          {close}
-        </article>
-
-        <article id="contact" className={`${this.props.article === 'contact' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-          <h2 className="major">Contact</h2>
-          <form method="post" action="#">
+        <article
+          id="contact"
+          className={`${this.props.article === "contact" ? "active" : ""} ${
+            this.props.articleTimeout ? "timeout" : ""
+          }`}
+          style={{ display: "none" }}
+        >
+          <h2 className="major">Kontakt</h2>
+          <form onSubmit={(e) => this.submitContact(e)}>
             <div className="field half first">
-              <label htmlFor="name">Name</label>
-              <input type="text" name="name" id="name" />
+              <label htmlFor="name">Vaše meno</label>
+              <input
+                type="text"
+                name="name"
+                onChange={(event) =>
+                  this.setState({ contactForm: { name: event.target.value } })
+                }
+                value={this.state.contactForm.name}
+                id="name"
+              />
             </div>
             <div className="field half">
-              <label htmlFor="email">Email</label>
-              <input type="text" name="email" id="email" />
+              <label htmlFor="email">Váš email</label>
+              <input
+                type="text"
+                name="email"
+                onChange={(event) =>
+                  this.setState({ contactForm: { email: event.target.value } })
+                }
+                value={this.state.contactForm.email}
+                id="email"
+              />
             </div>
             <div className="field">
-              <label htmlFor="message">Message</label>
-              <textarea name="message" id="message" rows="4"></textarea>
+              <label htmlFor="message">Správa</label>
+              <textarea
+                name="message"
+                onChange={(event) =>
+                  this.setState({
+                    contactForm: { message: event.target.value },
+                  })
+                }
+                value={this.state.contactForm.message}
+                id="message"
+                rows="4"
+              ></textarea>
             </div>
             <ul className="actions">
-              <li><input type="submit" value="Send Message" className="special" /></li>
-              <li><input type="reset" value="Reset" /></li>
+              <li>
+                <input type="submit" value="Send Message" className="special" />
+              </li>
+              <li>
+                <input
+                  type="reset"
+                  value="Reset"
+                  onClick={() =>
+                    this.setState({
+                      contactForm: { name: "", email: "", message: "" },
+                    })
+                  }
+                />
+              </li>
             </ul>
           </form>
-          <ul className="icons">
-            <li><a href="#">
-              <FontAwesomeIcon icon={faTwitter} />
-            </a></li>
-            <li><a href="#">
-              <FontAwesomeIcon icon={faFacebook} />
-            </a></li>
-            <li><a href="#">
-              <FontAwesomeIcon icon={faInstagram} />
-            </a></li>
-            <li><a href="#">
-              <FontAwesomeIcon icon={faGithub} />
-            </a></li>
-          </ul>
           {close}
         </article>
-
       </div>
-    )
+    );
   }
 }
 
@@ -83,7 +175,7 @@ Main.propTypes = {
   article: PropTypes.string,
   articleTimeout: PropTypes.bool,
   onCloseArticle: PropTypes.func,
-  timeout: PropTypes.bool
-}
+  timeout: PropTypes.bool,
+};
 
-export default Main
+export default Main;
