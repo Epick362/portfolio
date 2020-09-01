@@ -25,7 +25,6 @@ const Header = (props) => (
       <ul>
         <li>
           <a
-            href="javascript:;"
             onClick={() => {
               props.onOpenArticle("intro");
             }}
@@ -35,7 +34,6 @@ const Header = (props) => (
         </li>
         <li>
           <a
-            href="javascript:;"
             onClick={() => {
               props.onOpenArticle("work");
             }}
@@ -45,7 +43,6 @@ const Header = (props) => (
         </li>
         <li>
           <a
-            href="javascript:;"
             onClick={() => {
               props.onOpenArticle("contact");
             }}
