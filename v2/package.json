@@ -1,0 +1,27 @@
+{
+  "name": "filiphajek-sk",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preinstall": "node scripts/check-pkg-age.mjs",
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "deploy": "vinxi build && wrangler deploy"
+  },
+  "dependencies": {
+    "@marsidev/react-turnstile": "1.5.2",
+    "@tanstack/react-router": "1.169.2",
+    "@tanstack/react-start": "1.167.65",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.0",
+    "tailwindcss": "4.3.0",
+    "typescript": "6.0.3",
+    "vinxi": "0.5.11",
+    "vite": "8.0.12",
+    "wrangler": "4.90.1"
+  }
+}
