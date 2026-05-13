@@ -40,9 +40,8 @@ export function Footer() {
           </a>
         </li>
         <li>
-          {/* Update this URL if your LinkedIn slug differs */}
           <a
-            href="https://www.linkedin.com/in/filiphajek/"
+            href="https://www.linkedin.com/in/filip-hajek-sk/"
             className="social-link"
             target="_blank"
             rel="noopener noreferrer"
