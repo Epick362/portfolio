@@ -15,7 +15,7 @@ export const en = {
   nav_contact: 'Contact',
 
   // Lang toggle
-  lang_toggle: 'SK',
+  lang_toggle: '🇸🇰 SK',
 
   // About
   about_title: 'About',

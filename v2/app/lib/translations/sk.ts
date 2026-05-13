@@ -15,7 +15,7 @@ export const sk = {
   nav_contact: 'Kontakt',
 
   // Lang toggle
-  lang_toggle: 'EN',
+  lang_toggle: '🇬🇧 EN',
 
   // About
   about_title: 'O mne',
