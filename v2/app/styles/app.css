@@ -240,10 +240,10 @@ nav ul li:last-child .nav-btn {
   border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 4px;
   width: 100%;
-  max-width: 38rem;
-  max-height: 85vh;
+  max-width: 44rem;
+  max-height: 88vh;
   overflow-y: auto;
-  padding: 2.75rem 2.75rem 2.25rem;
+  padding: 3rem 3.25rem 2.5rem;
   opacity: 0;
   transform: translateY(0.6rem);
   transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
@@ -255,22 +255,22 @@ nav ul li:last-child .nav-btn {
 }
 
 .article-panel h2 {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.35rem;
   text-transform: uppercase;
   color: #ffffff;
-  margin: 0 0 1.75rem;
-  padding-bottom: 0.85rem;
+  margin: 0 0 2rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .article-panel p {
-  font-size: 1rem;
-  line-height: 1.9;
-  color: rgba(255, 255, 255, 0.82);
-  margin: 0 0 1.25rem;
-  letter-spacing: 0.02rem;
+  font-size: 1.125rem;
+  line-height: 1.95;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 1.5rem;
+  letter-spacing: 0.01rem;
 }
 
 .article-image {
@@ -285,7 +285,7 @@ nav ul li:last-child .nav-btn {
 .article-link {
   display: inline-block;
   margin-top: 0.75rem;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.15rem;
   text-transform: uppercase;
@@ -533,8 +533,12 @@ textarea.form-input {
   }
 
   .article-panel {
-    padding: 2rem 1.5rem 1.75rem;
-    max-height: 90vh;
+    padding: 2.25rem 1.75rem 2rem;
+    max-height: 92vh;
+  }
+
+  .article-panel p {
+    font-size: 1.05rem;
   }
 
   .form-field-half {
