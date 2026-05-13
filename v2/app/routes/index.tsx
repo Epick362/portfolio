@@ -12,23 +12,16 @@ export const Route = createFileRoute('/')({
 function Home() {
   const [article, setArticle] = useState<ArticleId | null>(null)
   const [isActive, setIsActive] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
 
   const openArticle = useCallback((id: ArticleId) => {
     setArticle(id)
     setIsActive(true)
-    // Small delay so the panel is mounted before the CSS transition fires
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => setIsVisible(true))
-    })
   }, [])
 
   const closeArticle = useCallback(() => {
-    setIsVisible(false)
-    setTimeout(() => {
-      setIsActive(false)
-      setArticle(null)
-    }, 325)
+    setIsActive(false)
+    // Wait for CSS transition before unmounting content
+    setTimeout(() => setArticle(null), 350)
   }, [])
 
   useEffect(() => {
@@ -45,7 +38,6 @@ function Home() {
       <ArticleModal
         article={article}
         isActive={isActive}
-        isVisible={isVisible}
         onClose={closeArticle}
       />
       <Footer />
