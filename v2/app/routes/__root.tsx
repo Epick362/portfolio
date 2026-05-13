@@ -1,5 +1,8 @@
-import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
-import { I18nProvider } from '../lib/i18n'
+import { createRootRoute, HeadContent, Link, Outlet, Scripts, useNavigate, useRouterState } from '@tanstack/react-router'
+import { useEffect } from 'react'
+import { I18nProvider, useI18n } from '../lib/i18n'
+import { Header } from '../components/Header'
+import { Footer } from '../components/Footer'
 import appCss from '../styles/app.css?url'
 
 export const Route = createRootRoute({
@@ -31,10 +34,43 @@ function RootComponent() {
       </head>
       <body>
         <I18nProvider>
-          <Outlet />
+          <AppShell />
         </I18nProvider>
         <Scripts />
       </body>
     </html>
+  )
+}
+
+function AppShell() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const navigate = useNavigate()
+  const { t } = useI18n()
+  const isArticle = pathname !== '/'
+
+  useEffect(() => {
+    if (!isArticle) return
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') navigate({ to: '/' })
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [isArticle, navigate])
+
+  return (
+    <div id="wrapper" className={isArticle ? 'article-active' : ''}>
+      <Header />
+      {isArticle ? (
+        <div className="article-panel">
+          <Link to="/" className="close-btn" aria-label={t('close')}>
+            {t('close')}
+          </Link>
+          <Outlet />
+        </div>
+      ) : (
+        <Outlet />
+      )}
+      <Footer />
+    </div>
   )
 }

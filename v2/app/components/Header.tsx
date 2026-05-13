@@ -1,11 +1,7 @@
+import { Link } from '@tanstack/react-router'
 import { useI18n } from '../lib/i18n'
-import type { ArticleId } from '../lib/types'
 
-interface Props {
-  onOpenArticle: (id: ArticleId) => void
-}
-
-export function Header({ onOpenArticle }: Props) {
+export function Header() {
   const { t, locale, setLocale } = useI18n()
 
   return (
@@ -39,19 +35,19 @@ export function Header({ onOpenArticle }: Props) {
           <nav aria-label="Main navigation">
             <ul>
               <li>
-                <button className="nav-btn" onClick={() => onOpenArticle('about')}>
+                <Link to="/about" className="nav-btn">
                   {t('nav_about')}
-                </button>
+                </Link>
               </li>
               <li>
-                <button className="nav-btn" onClick={() => onOpenArticle('work')}>
+                <Link to="/work" className="nav-btn">
                   {t('nav_work')}
-                </button>
+                </Link>
               </li>
               <li>
-                <button className="nav-btn" onClick={() => onOpenArticle('contact')}>
+                <Link to="/contact" className="nav-btn">
                   {t('nav_contact')}
-                </button>
+                </Link>
               </li>
             </ul>
           </nav>

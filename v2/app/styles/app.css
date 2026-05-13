@@ -53,6 +53,11 @@ body::before {
   gap: 1.5rem;
 }
 
+#wrapper.article-active {
+  justify-content: flex-start;
+  padding-top: 3rem;
+}
+
 /* ========== Header ========== */
 #header {
   display: flex;
@@ -62,12 +67,13 @@ body::before {
   text-align: center;
   max-width: 30rem;
   width: 100%;
-  transition: opacity 0.325s ease-in-out, filter 0.325s ease-in-out;
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
 }
 
 .article-active #header {
-  opacity: 0.15;
-  filter: blur(2px);
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.96) translateY(-0.4rem);
   pointer-events: none;
   user-select: none;
 }
@@ -150,6 +156,8 @@ nav ul {
 }
 
 .nav-btn {
+  display: inline-block;
+  text-decoration: none;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-left: none;
@@ -207,54 +215,31 @@ nav ul li:last-child .nav-btn {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* ========== Article overlay / modal ========== */
-.article-overlay {
-  visibility: hidden;
-  opacity: 0;
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  transition: opacity 0.325s ease-in-out, visibility 0s linear 0.325s;
-}
-
-.article-overlay.active {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.325s ease-in-out, visibility 0s linear 0s;
-}
-
-.article-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(19, 21, 25, 0.82);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  cursor: pointer;
-}
-
+/* ========== Article panel (in-flow page) ========== */
 .article-panel {
   position: relative;
-  z-index: 1;
-  background: rgba(27, 31, 34, 0.97);
-  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 4px;
   width: 100%;
   max-width: 44rem;
-  max-height: 88vh;
+  max-height: 82vh;
   overflow-y: auto;
   padding: 3rem 3.25rem 2.5rem;
-  opacity: 0;
-  transform: translateY(0.6rem);
-  transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
+  animation: panel-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.article-overlay.active .article-panel {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .article-panel h2 {
@@ -307,9 +292,11 @@ nav ul li:last-child .nav-btn {
   position: absolute;
   top: 0.75rem;
   right: 1rem;
+  display: inline-block;
+  text-decoration: none;
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.35);
   font-family: 'Nunito', sans-serif;
   font-size: 0.6rem;
   font-weight: 600;
@@ -322,7 +309,7 @@ nav ul li:last-child .nav-btn {
 }
 
 .close-btn:hover {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .article-panel::-webkit-scrollbar {
@@ -476,10 +463,7 @@ textarea.form-input {
 }
 
 .article-active #footer {
-  opacity: 0.15;
-  filter: blur(2px);
-  pointer-events: none;
-  user-select: none;
+  opacity: 0.6;
 }
 
 .footer-copyright {
