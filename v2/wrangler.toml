@@ -1,10 +1,6 @@
 name = "filiphajek-sk"
-main = ".output/server/index.mjs"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
-
-[assets]
-directory = ".output/public"
 
 # Secrets are set via: wrangler secret put TURNSTILE_SECRET_KEY
 # Secrets are set via: wrangler secret put RESEND_API_KEY

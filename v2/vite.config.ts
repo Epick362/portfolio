@@ -1,0 +1,14 @@
+import tailwindcss from '@tailwindcss/vite'
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import { cloudflare } from '@cloudflare/vite-plugin'
+import viteReact from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+    tanstackStart({ srcDirectory: 'app' }), // must come before react()
+    cloudflare(),
+    viteReact(),
+  ],
+})

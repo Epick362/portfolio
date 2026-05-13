@@ -1,5 +1,4 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { Meta, Scripts } from '@tanstack/react-start'
+import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
 import { I18nProvider } from '../lib/i18n'
 import appCss from '../styles/app.css?url'
 
@@ -28,7 +27,7 @@ function RootComponent() {
   return (
     <html lang="sk">
       <head>
-        <Meta />
+        <HeadContent />
       </head>
       <body>
         <I18nProvider>

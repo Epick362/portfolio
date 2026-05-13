@@ -1,5 +1,6 @@
 import { Turnstile } from '@marsidev/react-turnstile'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
+import { submitContact } from '../lib/contact'
 import { useI18n } from '../lib/i18n'
 
 type Status = 'idle' | 'loading' | 'success' | 'error'
@@ -8,25 +9,22 @@ export function ContactForm() {
   const { t } = useI18n()
   const [status, setStatus] = useState<Status>('idle')
   const [token, setToken] = useState<string>('')
-  const formRef = useRef<HTMLFormElement>(null)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!token || status === 'loading') return
 
     setStatus('loading')
-    const formData = new FormData(formRef.current!)
-    formData.set('cf-turnstile-response', token)
-
     try {
-      const res = await fetch('/api/contact', { method: 'POST', body: formData })
-      if (res.ok) {
-        setStatus('success')
-        formRef.current?.reset()
-        setToken('')
-      } else {
-        setStatus('error')
-      }
+      await submitContact({ data: { name, email, message, token } })
+      setStatus('success')
+      setName('')
+      setEmail('')
+      setMessage('')
+      setToken('')
     } catch {
       setStatus('error')
     }
@@ -34,25 +32,28 @@ export function ContactForm() {
 
   function handleReset() {
     setStatus('idle')
-    formRef.current?.reset()
+    setName('')
+    setEmail('')
+    setMessage('')
   }
 
   if (status === 'success') {
     return <p className="form-success">{t('contact_success')}</p>
   }
 
-  const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA'
+  const siteKey = import.meta.env['VITE_TURNSTILE_SITE_KEY'] ?? '1x00000000000000000000AA'
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} noValidate>
+    <form onSubmit={handleSubmit} noValidate>
       <div className="form-fields">
         <div className="form-field-half">
           <label htmlFor="contact-name">{t('contact_name')}</label>
           <input
             id="contact-name"
-            name="name"
             type="text"
             className="form-input"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
             autoComplete="name"
           />
@@ -61,9 +62,10 @@ export function ContactForm() {
           <label htmlFor="contact-email">{t('contact_email')}</label>
           <input
             id="contact-email"
-            name="email"
             type="email"
             className="form-input"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             autoComplete="email"
           />
@@ -72,8 +74,9 @@ export function ContactForm() {
           <label htmlFor="contact-message">{t('contact_message')}</label>
           <textarea
             id="contact-message"
-            name="message"
             className="form-input"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
             required
             rows={5}
           />
