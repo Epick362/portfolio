@@ -62,8 +62,8 @@ function AppShell() {
       <Header />
       {isArticle ? (
         <div className="article-panel">
-          <Link to="/" className="close-btn" aria-label={t('close')}>
-            ← Back
+          <Link to="/" className="close-btn" aria-label={t('back')}>
+            {t('back')}
           </Link>
           <Outlet />
         </div>

@@ -45,6 +45,7 @@ export const sk = {
 
   // General
   close: 'Zavrieť',
+  back: '← Späť',
 } as const
 
 export type TranslationKey = keyof typeof sk

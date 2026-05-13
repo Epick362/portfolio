@@ -45,4 +45,5 @@ export const en = {
 
   // General
   close: 'Close',
+  back: '← Back',
 } as const
