@@ -60,7 +60,7 @@ body::before {
   align-items: center;
   gap: 0;
   text-align: center;
-  max-width: 22rem;
+  max-width: 30rem;
   width: 100%;
   transition: opacity 0.325s ease-in-out, filter 0.325s ease-in-out;
 }
@@ -268,7 +268,7 @@ nav ul li:last-child .nav-btn {
 .article-panel p {
   font-size: 1.125rem;
   line-height: 1.95;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.95);
   margin: 0 0 1.5rem;
   letter-spacing: 0.01rem;
 }
