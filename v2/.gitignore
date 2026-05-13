@@ -5,3 +5,5 @@ dist
 .env
 .env.local
 .wrangler
+# Override root .gitignore to track the lock file
+!package-lock.json
