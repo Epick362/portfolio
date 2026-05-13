@@ -63,7 +63,7 @@ function AppShell() {
       {isArticle ? (
         <div className="article-panel">
           <Link to="/" className="close-btn" aria-label={t('close')}>
-            {t('close')}
+            ← Back
           </Link>
           <Outlet />
         </div>

@@ -291,7 +291,7 @@ nav ul li:last-child .nav-btn {
 .close-btn {
   position: absolute;
   top: 0.75rem;
-  right: 1rem;
+  left: 1rem;
   display: inline-block;
   text-decoration: none;
   background: transparent;
