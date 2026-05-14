@@ -1,7 +1,9 @@
-.DS_Store
-.next
-.vscode
-out/
 node_modules
-yarn.lock
-package-lock.json
+.output
+.vinxi
+dist
+.env
+.env.local
+.wrangler
+# Override root .gitignore to track the lock file
+!package-lock.json
