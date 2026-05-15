@@ -1,13 +1,8 @@
 name = "filiphajek-sk"
 account_id = "fdd968b02324cff921f74c4f5b4c1e93"
-main = "dist/filiphajek_sk/index.js"
-no_bundle = true
+main = "virtual:tanstack-start-server-entry"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
-
-[[rules]]
-type = "ESModule"
-globs = ["**/*.js", "**/*.mjs"]
 
 routes = [
   { pattern = "filiphajek.sk", custom_domain = true },

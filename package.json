@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "node scripts/check-pkg-age.mjs",
     "dev": "vite dev",
-    "build": "mkdir -p dist/filiphajek_sk && touch dist/filiphajek_sk/index.js && vite build",
+    "build": "vite build",
     "start": "node .output/server/index.mjs",
     "deploy": "yarn build && wrangler deploy"
   },
