@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     tanstackStart({ srcDirectory: 'app' }), // must come before react()
-    cloudflare(),
+    cloudflare({ viteEnvironment: { name: 'ssr' } }),
     viteReact(),
   ],
 })
