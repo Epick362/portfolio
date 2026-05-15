@@ -7,7 +7,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "start": "node .output/server/index.mjs",
-    "deploy": "vite build && wrangler deploy --config wrangler.toml"
+    "deploy": "vite build && wrangler deploy --config dist/filiphajek_sk/wrangler.json"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "1.5.2",
