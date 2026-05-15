@@ -1,4 +1,5 @@
 name = "filiphajek-sk"
+main = "dist/filiphajek_sk/index.js"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 
@@ -6,6 +7,9 @@ routes = [
   { pattern = "filiphajek.sk", custom_domain = true },
   { pattern = "www.filiphajek.sk", custom_domain = true },
 ]
+
+[assets]
+directory = "./dist/client"
 
 # Secrets are set via: wrangler secret put TURNSTILE_SECRET_KEY
 # Secrets are set via: wrangler secret put RESEND_API_KEY
