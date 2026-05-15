@@ -5,9 +5,9 @@
   "scripts": {
     "preinstall": "node scripts/check-pkg-age.mjs",
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "mkdir -p dist/filiphajek_sk && touch dist/filiphajek_sk/index.js && vite build",
     "start": "node .output/server/index.mjs",
-    "deploy": "vite build && wrangler deploy --config dist/filiphajek_sk/wrangler.json"
+    "deploy": "yarn build && wrangler deploy"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "1.5.2",
