@@ -1,7 +1,7 @@
 name = "filiphajek-sk"
 account_id = "fdd968b02324cff921f74c4f5b4c1e93"
 main = "virtual:tanstack-start-server-entry"
-compatibility_date = "2025-01-01"
+compatibility_date = "2025-04-01"
 compatibility_flags = ["nodejs_compat"]
 
 routes = [
